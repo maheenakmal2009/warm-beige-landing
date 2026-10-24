@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import ScrollSequence from "@/components/ScrollSequence";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -14,17 +15,16 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
+const framePath = (i: number) => `/frames/ezgif-frame-${String(i + 1).padStart(3, "0")}.jpg`;
+
 function Index() {
   return (
-    <main className="flex min-h-screen items-center justify-center bg-background px-6">
-      <div className="max-w-xl text-center">
-        <h1 className="font-serif text-5xl tracking-tight text-foreground md:text-6xl">
-          Hello, welcome.
-        </h1>
-        <p className="mt-6 text-lg text-muted-foreground">
-          A simple, quiet page. Tell me what you'd like to add here.
-        </p>
-      </div>
+    <main style={{ background: "#efe8da" }}>
+      <ScrollSequence
+        frameCount={120}
+        framePath={framePath}
+        stages={["Milk", "Matcha", "Swirl", "Blend", "Sip"]}
+      />
     </main>
   );
 }
